@@ -2,10 +2,24 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 
 // 获取 Vercel 设置的环境变量 VITE_API_KEY
-// 千万不要直接把密钥字符串写在这里！
-const apiKey = import.meta.env.VITE_API_KEY;
+// 使用安全访问方式防止在某些环境中崩溃
+const getApiKey = () => {
+  try {
+    // 检查 import.meta.env 是否存在
+    if (import.meta && import.meta.env) {
+      return import.meta.env.VITE_API_KEY;
+    }
+  } catch (e) {
+    console.warn("Environment variable access failed", e);
+  }
+  return "";
+};
 
-const ai = new GoogleGenAI({ apiKey: apiKey || "" });
+const apiKey = getApiKey();
+
+// Initialize AI with a dummy key if missing to prevent immediate crash on load.
+// The real check happens in analyzeVictim.
+const ai = new GoogleGenAI({ apiKey: apiKey || "dummy-key" });
 
 export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult> => {
   try {
