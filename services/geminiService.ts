@@ -1,7 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { AnalysisResult } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: AIzaSyDJSycqDyVdG8pq5ofwPbKFBRk_imu0TAk });
 
 export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult> => {
   try {
