@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/generative-ai";
 import { AnalysisResult } from "../types";
 
 // 获取 Vercel 设置的环境变量 VITE_API_KEY
