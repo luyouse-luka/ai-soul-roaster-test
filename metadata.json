@@ -1,0 +1,7 @@
+{
+  "name": "AI 灵魂审判器",
+  "description": "A prank app that scans your face and generates a funny roast using Gemini AI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
