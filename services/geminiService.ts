@@ -19,7 +19,7 @@ const apiKey = getApiKey();
 
 // Initialize AI with a dummy key if missing to prevent immediate crash on load.
 // The real check happens in analyzeVictim.
-const ai = new GoogleGenAI({ apiKey: apiKey || "dummy-key" });
+const ai = new GoogleGenerativeAI({ apiKey: apiKey || "dummy-key" });
 
 export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult> => {
   try {
