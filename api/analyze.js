@@ -51,9 +51,12 @@ export default async function handler(req, res) {
 
       必须严格返回合法的 JSON 格式，不要包含 Markdown 标记（如 \`\`\`json）：
       {
-        "title": "4个字的成语或短语",
-        "roast": "2-3句话的毒舌点评",
-        "dangerLevel": 60-100之间的整数
+        "title": "4个字的成语或短语（如：注定搬砖、智商欠费）",
+        "roast": "2-3句话的毒舌点评，必须包含一个具体的比喻。",
+        "dangerLevel": "60-100之间的整数（危险指数）",
+        "score": "0-100之间的整数（作为人类的得分，越低越好笑，例如 5 分）",
+        "luckyItem": "一个荒谬的幸运物品（例如：过期传单、破洞袜子、别人的WIFI密码）",
+        "animalMatch": "一种匹配的生物（例如：树懒、哈士奇、单细胞生物、咸鱼）"
       }
     `;
 
@@ -121,7 +124,10 @@ export default async function handler(req, res) {
       details: errorMessage,
       title: "系统崩溃",
       roast: `检测失败，原因太尴尬了：${errorMessage}。可能是网络问题，也可能是您的长相真的把 AI 吓坏了。`,
-      dangerLevel: 999
+      dangerLevel: 999,
+      score: -100,
+      luckyItem: "报错日志",
+      animalMatch: "404 Not Found"
     });
   }
 }

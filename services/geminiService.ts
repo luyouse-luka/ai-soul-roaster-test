@@ -25,7 +25,10 @@ export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult
     return {
       title: "系统崩溃",
       roast: `检测失败，原因太尴尬了：${errorMessage}。可能是网络问题，也可能是您的长相真的把 AI 吓坏了。`,
-      dangerLevel: 999
+      dangerLevel: 999,
+      score: 0,
+      luckyItem: "路由器重启按钮",
+      animalMatch: "断网的恐龙"
     };
   }
 };
