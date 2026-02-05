@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Skull, Fingerprint, Activity, RefreshCcw, Camera, AlertTriangle } from 'lucide-react';
+import { Skull, Fingerprint, RefreshCcw, AlertTriangle } from 'lucide-react';
 import { AppStage, AnalysisResult } from './types';
 import { analyzeVictim } from './services/geminiService';
 import { GlitchText } from './components/GlitchText';
