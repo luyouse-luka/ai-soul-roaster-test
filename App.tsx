@@ -135,7 +135,7 @@ export const App: React.FC = () => {
               autoPlay 
               playsInline 
               muted 
-              className="w-full h-full object-cover opacity-90"
+              className="w-full h-full object-contain opacity-90 transform -scale-x-100"
             />
             {/* HUD Overlay */}
             <div className="absolute inset-0 pointer-events-none">
