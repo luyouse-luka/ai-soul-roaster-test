@@ -23,7 +23,7 @@ export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult
       2. 风格（随机选择一种）：
          - 赛博算命风：用科技词汇胡说八道命运（例如：你的运势代码充满了Bug）。
          - 生物观察风：像在观察某种低等生物（例如：这种灵长类动物的求偶概率为零）。
-         - 历史考古风：仿佛在看一个古老的文物（例如：这种发型在2024年就已经灭绝了）。
+         - 历史考古风：仿佛在看一个古老的文物（例如：这种发型在2026年就已经灭绝了）。
          - 职场PUA风：像个挑剔的老板（例如：你的长相不仅没有辨识度，甚至有点影响市容）。
       3. 内容：
          - 必须编造一个搞笑的"基因缺陷"、"社交隐患"或"注定失败的未来"。
@@ -39,7 +39,7 @@ export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult
     const cleanBase64 = base64Image.replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, "");
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash-latest',
+      model: 'gemini-1.5-flash',
       contents: {
         parts: [
           { inlineData: { mimeType: 'image/jpeg', data: cleanBase64 } },
@@ -64,11 +64,13 @@ export const analyzeVictim = async (base64Image: string): Promise<AnalysisResult
     if (!text) throw new Error("No response");
 
     return JSON.parse(text) as AnalysisResult;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini Error:", error);
+    // 提取错误信息以便调试
+    const errorMessage = error?.message || JSON.stringify(error);
     return {
-      title: "无法直视",
-      roast: "系统检测到该生物的面部数据过于离谱，导致服务器显卡冒烟了。建议您回炉重造。",
+      title: "系统崩溃",
+      roast: `检测失败，原因太尴尬了：${errorMessage}。建议您检查网络或 API Key，或者您的长相真的把 AI 吓坏了。`,
       dangerLevel: 999
     };
   }

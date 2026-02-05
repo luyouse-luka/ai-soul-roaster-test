@@ -53,7 +53,7 @@ export const App: React.FC = () => {
     canvasRef.current.height = videoRef.current.videoHeight;
     context.drawImage(videoRef.current, 0, 0);
     // 降低图片质量以加快上传速度
-    const imageBase64 = canvasRef.current.toDataURL('image/jpeg', 0.6);
+    const imageBase64 = canvasRef.current.toDataURL('image/jpeg', 0.5);
     
     if (stream) {
         stream.getTracks().forEach(track => track.stop());
