@@ -62,14 +62,23 @@ export const App: React.FC = () => {
 
     setStage(AppStage.PROCESSING);
     
-    const steps = ["锁定目标生物...", "解析面部风水...", "查询犯罪记录...", "正在生成吐槽...", "上传至黑历史数据库..."];
+    const steps = [
+      "锁定目标生物...", 
+      "解析面部风水...", 
+      "查询犯罪记录...", 
+      "检测智商余额...", 
+      "匹配外星物种...", 
+      "计算单身时长...", 
+      "正在生成吐槽...", 
+      "上传至黑历史数据库..."
+    ];
     let stepIndex = 0;
     const interval = setInterval(() => {
       if (stepIndex < steps.length) {
         setLoadingText(steps[stepIndex]);
         stepIndex++;
       }
-    }, 800);
+    }, 600);
 
     try {
       const analysis = await analyzeVictim(imageBase64);
@@ -177,7 +186,8 @@ export const App: React.FC = () => {
           <div className="mt-8 text-xs text-green-800 font-mono text-center">
             正在分析五官比例...<br/>
             正在计算智商余额...<br/>
-            正在匹配外星物种数据库...
+            正在匹配外星物种数据库...<br/>
+            警告：颜值过低可能导致系统崩溃...
           </div>
         </div>
       )}
@@ -221,7 +231,7 @@ export const App: React.FC = () => {
             onClick={resetApp}
             className="w-full py-4 bg-gray-900 border border-green-600 text-green-500 font-bold uppercase hover:bg-green-900/50 active:bg-green-500 active:text-black transition-colors flex items-center justify-center gap-2 mb-4"
           >
-            <RefreshCcw size={18} /> 祸害下一个人
+            <RefreshCcw size={18} /> 不信的话 你在试试看
           </button>
         </div>
       )}
